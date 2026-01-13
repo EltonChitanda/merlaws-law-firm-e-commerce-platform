@@ -1,0 +1,398 @@
+Folder PATH listing for volume Windows
+Volume serial number is 5687-BB7B
+C:.
+¦   careers.php
+¦   DATABASE_DOCUMENTATION.md
+¦   DATABASE_QUICK_REFERENCE.md
+¦   DATABASE_SCHEMA_DIAGRAM.md
+¦   folder_structure.txt
+¦   general-personal-injury.php
+¦   index.php
+¦   medical-negligence.php
+¦   motor-vehicle-accidents.php
+¦   Our-Firm.php
+¦   our-people.php
+¦   our-services.php
+¦   our-successes.php
+¦   premises-liability.php
+¦   product-liability.php
+¦   README.md
+¦   testimonials.php
+¦   
++---app
+¦   ¦   admin-login.php
+¦   ¦   cart.php
+¦   ¦   config.php
+¦   ¦   csrf.php
+¦   ¦   dashboard.php
+¦   ¦   forgot-password.php
+¦   ¦   login.php
+¦   ¦   logout.php
+¦   ¦   profile.php
+¦   ¦   README.md
+¦   ¦   register.php
+¦   ¦   reset-password.php
+¦   ¦   settings.php
+¦   ¦   test-admin-api.php
+¦   ¦   test-admin-login.php
+¦   ¦   
+¦   +---admin
+¦   ¦       analytics.php
+¦   ¦       appointments.php
+¦   ¦       audit.php
+¦   ¦       availability.php
+¦   ¦       backups.php
+¦   ¦       calendar.php
+¦   ¦       cases.php
+¦   ¦       compliance.php
+¦   ¦       content.php
+¦   ¦       dashboard.php
+¦   ¦       finance.php
+¦   ¦       messages.php
+¦   ¦       New Text Document - Copy.txt
+¦   ¦       New Text Document.txt
+¦   ¦       notifications.php
+¦   ¦       rbac.php
+¦   ¦       reports.php
+¦   ¦       role-switch.php
+¦   ¦       service-requests.php
+¦   ¦       settings.php
+¦   ¦       system-health.php
+¦   ¦       system.php
+¦   ¦       user-management.php
+¦   ¦       users.php
+¦   ¦       view (2).php
+¦   ¦       view.php
+¦   ¦       _footer.php
+¦   ¦       _header.php
+¦   ¦       
+¦   +---api
+¦   ¦       admin-analytics.php
+¦   ¦       appointments.php
+¦   ¦       auth-login.php
+¦   ¦       cart.php
+¦   ¦       notifications.php
+¦   ¦       session.php
+¦   ¦       
+¦   +---appointments
+¦   ¦       create.php
+¦   ¦       index.php
+¦   ¦       
+¦   +---assets
+¦   ¦   +---css
+¦   ¦   ¦       responsive.css
+¦   ¦   ¦       theme.css
+¦   ¦   ¦       
+¦   ¦   +---js
+¦   ¦           auth-validate.js
+¦   ¦           focus-trap.js
+¦   ¦           mobile-responsive.js
+¦   ¦           ui-toasts.js
+¦   ¦           
+¦   +---cases
+¦   ¦       create.php
+¦   ¦       edit.php
+¦   ¦       index.php
+¦   ¦       upload-document.php
+¦   ¦       view.php
+¦   ¦       
+¦   +---documents
+¦   ¦       download.php
+¦   ¦       index.php
+¦   ¦       upload.php
+¦   ¦       
+¦   +---files
+¦   ¦       index.php
+¦   ¦       
+¦   +---messages
+¦   ¦       compose.php
+¦   ¦       index.php
+¦   ¦       
+¦   +---models
+¦   ¦       AuthResult.php
+¦   ¦       
+¦   +---notifications
+¦   ¦       index.php
+¦   ¦       
+¦   +---progress
+¦   ¦       index.php
+¦   ¦       
+¦   +---reports
+¦   ¦       index.php
+¦   ¦       
+¦   +---services
+¦           AuthService.php
+¦           cart.php
+¦           catalogue.php
+¦           request.php
+¦           
++---css
+¦       default-1.css
+¦       default.css
+¦       
++---database
+¦       medlaw v3.sql
+¦       
++---favicon
+¦       apple-touch-icon-1.png
+¦       apple-touch-icon.png
+¦       favicon-16x16-1.png
+¦       favicon-16x16.png
+¦       favicon-32x32-1.png
+¦       favicon-32x32.png
+¦       site-1.webmanifest
+¦       site.webmanifest
+¦       
++---file
+¦       claim-infographic-1.pdf
+¦       claim-infographic.pdf
+¦       judgement-natal-mercury-1.pdf
+¦       judgement-natal-mercury.pdf
+¦       News_Article-1.png
+¦       News_Article.png
+¦       NEWS_Article_ProteaNews_July2016-1.png
+¦       NEWS_Article_ProteaNews_July2016.png
+¦       paia-manual-1.pdf
+¦       paia-manual.pdf
+¦       POPI-Policy_210802-1.pdf
+¦       POPI-Policy_210802.pdf
+¦       
++---font
+¦       montserrat-v25-latin-300-1.woff
+¦       montserrat-v25-latin-300-1.woff2
+¦       montserrat-v25-latin-300.woff
+¦       montserrat-v25-latin-300.woff2
+¦       montserrat-v25-latin-500-1.woff
+¦       montserrat-v25-latin-500-1.woff2
+¦       montserrat-v25-latin-500.woff
+¦       montserrat-v25-latin-500.woff2
+¦       montserrat-v25-latin-600-1.woff
+¦       montserrat-v25-latin-600-1.woff2
+¦       montserrat-v25-latin-600.woff
+¦       montserrat-v25-latin-600.woff2
+¦       montserrat-v25-latin-700-1.woff
+¦       montserrat-v25-latin-700-1.woff2
+¦       montserrat-v25-latin-700.woff
+¦       montserrat-v25-latin-700.woff2
+¦       montserrat-v25-latin-900-1.woff
+¦       montserrat-v25-latin-900-1.woff2
+¦       montserrat-v25-latin-900.woff
+¦       montserrat-v25-latin-900.woff2
+¦       montserrat-v25-latin-regular-1.woff
+¦       montserrat-v25-latin-regular-1.woff2
+¦       montserrat-v25-latin-regular.woff
+¦       montserrat-v25-latin-regular.woff2
+¦       
++---image
+¦       Anjelique-1.webp
+¦       Anjelique.webp
+¦       anke-1.webp
+¦       anke.webp
+¦       arrive-alive-1.webp
+¦       arrive-alive.webp
+¦       arrow-1.webp
+¦       arrow.webp
+¦       bianca-1.webp
+¦       bianca.webp
+¦       claim-guide-1.webp
+¦       claim-guide.webp
+¦       consultation-1.webp
+¦       consultation.webp
+¦       country-1.webp
+¦       country.webp
+¦       crosses-1.webp
+¦       crosses-hr-1.webp
+¦       crosses-hr.webp
+¦       crosses-med-1.webp
+¦       crosses-med.webp
+¦       crosses-sml-1.webp
+¦       crosses-sml.webp
+¦       crosses.webp
+¦       dont-do-1.webp
+¦       dont-do.webp
+¦       filing-lawsuit-1.webp
+¦       filing-lawsuit.webp
+¦       freedom-banner-1.webp
+¦       freedom-banner-m-1.webp
+¦       freedom-banner-m.webp
+¦       freedom-banner.webp
+¦       head-office-1-1.webp
+¦       head-office-1.webp
+¦       head-office-2-1.webp
+¦       head-office-2.webp
+¦       head-office-3-1.webp
+¦       head-office-3.webp
+¦       head-office-4-1.webp
+¦       head-office-4.webp
+¦       home-banner-1.webp
+¦       home-banner-m-1.webp
+¦       home-banner-m.webp
+¦       home-banner.webp
+¦       hope-banner-1.webp
+¦       hope-banner-m-1.webp
+¦       hope-banner-m.webp
+¦       hope-banner.webp
+¦       icon-accessibility-1.webp
+¦       icon-accessibility.webp
+¦       icon-accurate-1.webp
+¦       icon-accurate.webp
+¦       icon-affordable-1.webp
+¦       icon-affordable.webp
+¦       icon-best-interest-1.webp
+¦       icon-best-interest.webp
+¦       icon-car-1.webp
+¦       icon-car.webp
+¦       icon-communication-1.webp
+¦       icon-communication.webp
+¦       icon-confidential-1.webp
+¦       icon-confidential.webp
+¦       icon-heart-1.webp
+¦       icon-heart.webp
+¦       icon-no-win-no-fee-1.webp
+¦       icon-no-win-no-fee.webp
+¦       icon-personal-1.webp
+¦       icon-personal.webp
+¦       icon-premise-1.webp
+¦       icon-premise.webp
+¦       icon-product-1.webp
+¦       icon-product.webp
+¦       icon-protection-1.webp
+¦       icon-protection.webp
+¦       icon-resources-1.webp
+¦       icon-resources.webp
+¦       icon-respect-1.webp
+¦       icon-respect.webp
+¦       icon-track-record-1.webp
+¦       icon-track-record.webp
+¦       jessica-1.webp
+¦       jessica.webp
+¦       kagiso-1.webp
+¦       kagiso.webp
+¦       map-1.webp
+¦       map.webp
+¦       menu-1.webp
+¦       menu.webp
+¦       new-beginnings-banner-1.webp
+¦       new-beginnings-banner-m-1.webp
+¦       new-beginnings-banner-m.webp
+¦       new-beginnings-banner.webp
+¦       nicole-1.webp
+¦       nicole.webp
+¦       nicolle-1.webp
+¦       nicolle.webp
+¦       poly-1.webp
+¦       poly.webp
+¦       protea-urban-news-1.webp
+¦       protea-urban-news.webp
+¦       protection-banner-1.webp
+¦       protection-banner-m-1.webp
+¦       protection-banner-m.webp
+¦       protection-banner.webp
+¦       quote-personal-1.webp
+¦       quote-personal.webp
+¦       quotes-1.webp
+¦       quotes.webp
+¦       ryan-1.webp
+¦       ryan.webp
+¦       sandra-1.webp
+¦       sandra.webp
+¦       sarisha-1.webp
+¦       sarisha.webp
+¦       success-banner-1.webp
+¦       success-banner-m-1.webp
+¦       success-banner-m.webp
+¦       success-banner.webp
+¦       sunday-times-1.webp
+¦       sunday-times.webp
+¦       support-banner-1.webp
+¦       support-banner-m-1.webp
+¦       support-banner-m.webp
+¦       support-banner.webp
+¦       teamwork-banner-1.webp
+¦       teamwork-banner-m-1.webp
+¦       teamwork-banner-m.webp
+¦       teamwork-banner.webp
+¦       the-mercury-1.webp
+¦       the-mercury.webp
+¦       the-process-1.webp
+¦       the-process.webp
+¦       toward-a-brighter-future-1.webp
+¦       toward-a-brighter-future-m-1.webp
+¦       toward-a-brighter-future-m.webp
+¦       toward-a-brighter-future.webp
+¦       veronica-1.webp
+¦       veronica.webp
+¦       
++---include
+¦       footer.php
+¦       header.php
+¦       
++---recaptcha
+¦       api-1.js
+¦       api.js
+¦       
++---script
+¦       default-1.js
+¦       default.js
+¦       google-1.js
+¦       google.js
+¦       gsap.min-1.js
+¦       gsap.min.js
+¦       ScrollTrigger.min-1.js
+¦       ScrollTrigger.min.js
+¦       
++---storage
+¦   +---availability
+¦           availability_20001.json
+¦           
++---testsprite_tests
+¦   ¦   medlaw-client-tests.mpc
+¦   ¦   standard_prd.json
+¦   ¦   TC001_User_Registration_Success.py
+¦   ¦   TC002_User_Registration_Input_Validation.py
+¦   ¦   TC003_User_Login_Success.py
+¦   ¦   TC004_User_Login_Fail_with_Invalid_Credentials.py
+¦   ¦   TC005_Password_Reset_Workflow.py
+¦   ¦   TC006_Client_Case_Creation_and_Upload_Documents.py
+¦   ¦   TC007_Upload_Invalid_Document_Types.py
+¦   ¦   TC008_Service_Catalog_Browsing_and_Adding_to_Case_Cart.py
+¦   ¦   TC009_Submit_Service_Requests_and_Admin_Approval_Workflow.py
+¦   ¦   TC010_Case_Status_Updates_and_Fee_Calculation_on_Win.py
+¦   ¦   TC011_Internal_Messaging_between_Clients_and_Attorneys.py
+¦   ¦   TC012_Appointment_Scheduling_for_Client_Attorney_Meetings.py
+¦   ¦   TC013_Role_Based_Access_Control_Enforcement.py
+¦   ¦   TC014_CSRF_Protection_Validation.py
+¦   ¦   TC015_Email_Notification_on_Key_Events.py
+¦   ¦   TC016_Responsive_UI_Testing_on_Multiple_Devices.py
+¦   ¦   TC017_Reports_and_Analytics_Data_Accuracy.py
+¦   ¦   TC018_System_Health_Monitoring_Admin_Access.py
+¦   ¦   TC019_Session_Management_and_Logout.py
+¦   ¦   TC020_Service_Cart_Persistence_Across_Sessions.py
+¦   ¦   TC021_Input_Validation_in_Service_Requests_and_Case_Updates.py
+¦   ¦   TC022_Unauthorized_Access_Attempt_Logging.py
+¦   ¦   testsprite_frontend_test_plan.json
+¦   ¦   
+¦   +---tmp
+¦       ¦   code_summary.json
+¦       ¦   config.json
+¦       ¦   execution.lock
+¦       ¦   test_results.json
+¦       ¦   
+¦       +---prd_files
+¦               Documentation & Coding.pdf
+¦               
++---uploads
+    +---cases
+        +---documents
+            +---24111
+            ¦       68f1306555e37_1760637029.png
+            ¦       
+            +---24112
+            ¦       68f15a9b1715b_1760647835.docx
+            ¦       
+            +---24113
+            ¦       68f1d7b4950d9_1760679860.png
+            ¦       
+            +---24114
+                    68f2623e1a62a_1760715326.png
+                    

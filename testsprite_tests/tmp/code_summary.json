@@ -1,0 +1,115 @@
+{
+  "tech_stack": ["PHP", "MySQL", "Bootstrap 5.3", "JavaScript ES2023", "HTML5", "CSS3", "Apache", "XAMPP"],
+  "features": [
+    {
+      "name": "Authentication System",
+      "description": "Complete user authentication with login, registration, password reset, and CSRF protection",
+      "files": ["app/login.php", "app/register.php", "app/forgot-password.php", "app/reset-password.php", "app/api/auth-login.php", "app/csrf.php", "app/services/AuthService.php", "app/models/AuthResult.php"]
+    },
+    {
+      "name": "Client Dashboard",
+      "description": "Main client portal dashboard with case overview, statistics, and navigation",
+      "files": ["app/dashboard.php", "app/assets/css/theme.css", "app/assets/css/responsive.css"]
+    },
+    {
+      "name": "Case Management",
+      "description": "Complete case lifecycle management including creation, editing, viewing, and status tracking",
+      "files": ["app/cases/index.php", "app/cases/create.php", "app/cases/edit.php", "app/cases/view.php", "app/cases/status.php"]
+    },
+    {
+      "name": "Document Management",
+      "description": "Secure document upload, download, and management system with file type validation",
+      "files": ["app/documents/index.php", "app/documents/upload.php", "app/documents/download.php"]
+    },
+    {
+      "name": "Service Catalog & Cart",
+      "description": "Service request system with catalog browsing, cart functionality, and approval workflow",
+      "files": ["app/services/catalogue.php", "app/services/cart.php", "app/services/request.php", "app/api/cart.php"]
+    },
+    {
+      "name": "Appointment System",
+      "description": "Appointment scheduling and management for client-attorney meetings",
+      "files": ["app/appointments/index.php", "app/appointments/create.php"]
+    },
+    {
+      "name": "Messaging System",
+      "description": "Internal messaging system for client-attorney communication",
+      "files": ["app/messages/index.php", "app/messages/compose.php"]
+    },
+    {
+      "name": "Notifications",
+      "description": "System-wide notification management for important updates and alerts",
+      "files": ["app/notifications/index.php"]
+    },
+    {
+      "name": "User Profile Management",
+      "description": "User profile editing, settings management, and account preferences",
+      "files": ["app/profile.php", "app/settings.php"]
+    },
+    {
+      "name": "Progress Tracking",
+      "description": "Case progress visualization and milestone tracking",
+      "files": ["app/progress/index.php"]
+    },
+    {
+      "name": "Reports & Analytics",
+      "description": "Client reporting system with data export capabilities",
+      "files": ["app/reports/index.php"]
+    },
+    {
+      "name": "File Management",
+      "description": "General file handling and storage system",
+      "files": ["app/files/index.php"]
+    },
+    {
+      "name": "Admin Dashboard",
+      "description": "Administrative interface for staff and attorneys with comprehensive management tools",
+      "files": ["app/admin/dashboard.php", "app/admin/_header.php", "app/admin/_footer.php"]
+    },
+    {
+      "name": "Admin User Management",
+      "description": "User account management, role assignment, and access control",
+      "files": ["app/admin/users.php", "app/admin/user-management.php"]
+    },
+    {
+      "name": "Admin Service Management",
+      "description": "Service request approval, rejection, and management workflow",
+      "files": ["app/admin/service-requests.php"]
+    },
+    {
+      "name": "Admin Analytics",
+      "description": "System analytics, reporting, and performance monitoring",
+      "files": ["app/admin/analytics.php", "app/admin/reports.php", "app/api/admin-analytics.php"]
+    },
+    {
+      "name": "Admin System Management",
+      "description": "System health monitoring, settings, and configuration management",
+      "files": ["app/admin/system.php", "app/admin/system-health.php", "app/admin/settings.php"]
+    },
+    {
+      "name": "Admin Communication",
+      "description": "Administrative messaging and notification management",
+      "files": ["app/admin/messages.php", "app/admin/notifications.php"]
+    },
+    {
+      "name": "Database Configuration",
+      "description": "Database connection, helper functions, and data access layer",
+      "files": ["app/config.php", "database/medlaw v3.sql"]
+    },
+    {
+      "name": "Frontend Assets",
+      "description": "CSS styling, JavaScript functionality, and responsive design components",
+      "files": ["app/assets/css/theme.css", "app/assets/css/responsive.css", "app/assets/js/auth-validate.js", "app/assets/js/focus-trap.js", "app/assets/js/mobile-responsive.js"]
+    },
+    {
+      "name": "Public Website",
+      "description": "Static marketing website with service pages and firm information",
+      "files": ["index.html", "our-firm.html", "our-services.html", "contact-us.php", "css/default.css", "script/default.js"]
+    },
+    {
+      "name": "Security Features",
+      "description": "CSRF protection, input validation, file upload security, and access control",
+      "files": ["app/csrf.php", "app/config.php"]
+    }
+  ]
+} 

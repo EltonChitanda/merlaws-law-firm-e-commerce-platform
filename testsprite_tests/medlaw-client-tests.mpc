@@ -1,0 +1,552 @@
+# Med Attorneys Client-Side Testing Suite
+# TestSprite MPC Configuration for comprehensive client portal testing
+
+# Test Configuration
+config:
+  name: "Med Attorneys Client Portal Tests"
+  base_url: "http://localhost/www.medlaw.co.za"
+  timeout: 30000
+  screenshot_on_failure: true
+  video_recording: true
+  parallel_execution: false
+  
+# Test Data
+data:
+  test_user:
+    name: "John Test Client"
+    email: "testclient@medlaw.test"
+    phone: "+27123456789"
+    password: "TestPass123!"
+    confirm_password: "TestPass123!"
+    
+  invalid_user:
+    email: "invalid@test.com"
+    password: "wrongpass"
+    
+  case_data:
+    title: "Motor Vehicle Accident Case"
+    description: "Rear-end collision on N1 highway"
+    case_type: "motor_vehicle_accident"
+    incident_date: "2024-01-15"
+    
+  profile_data:
+    address: "123 Test Street"
+    city: "Cape Town"
+    postal_code: "8001"
+    id_number: "8001015009087"
+    medical_aid: "Discovery Health"
+
+# Test Suites
+tests:
+
+  # 1. AUTHENTICATION FLOW TESTS
+  - name: "User Registration Flow"
+    description: "Test complete user registration process"
+    steps:
+      - action: navigate
+        url: "/app/register.php"
+        
+      - action: wait_for_element
+        selector: "form[data-auth-form]"
+        
+      - action: fill_form
+        data:
+          name: "{{test_user.name}}"
+          email: "{{test_user.email}}"
+          phone: "{{test_user.phone}}"
+          password: "{{test_user.password}}"
+          confirm_password: "{{test_user.confirm_password}}"
+          
+      - action: check_checkbox
+        selector: "input[name='terms']"
+        
+      - action: click
+        selector: "button[type='submit']"
+        
+      - action: wait_for_navigation
+        expected_url: "/app/dashboard.php"
+        
+      - action: assert_element_visible
+        selector: ".dashboard-welcome"
+        
+      - action: assert_text_contains
+        selector: ".user-name"
+        text: "{{test_user.name}}"
+
+  - name: "User Login Flow"
+    description: "Test user login with valid credentials"
+    steps:
+      - action: navigate
+        url: "/app/login.php"
+        
+      - action: fill_form
+        data:
+          email: "{{test_user.email}}"
+          password: "{{test_user.password}}"
+          
+      - action: click
+        selector: "button[type='submit']"
+        
+      - action: wait_for_navigation
+        expected_url: "/app/dashboard.php"
+        
+      - action: assert_element_visible
+        selector: ".dashboard-stats"
+
+  - name: "Invalid Login Attempt"
+    description: "Test login with invalid credentials"
+    steps:
+      - action: navigate
+        url: "/app/login.php"
+        
+      - action: fill_form
+        data:
+          email: "{{invalid_user.email}}"
+          password: "{{invalid_user.password}}"
+          
+      - action: click
+        selector: "button[type='submit']"
+        
+      - action: assert_element_visible
+        selector: ".alert-danger"
+        
+      - action: assert_url_contains
+        text: "login.php"
+
+  # 2. DASHBOARD TESTS
+  - name: "Client Dashboard Access"
+    description: "Test client dashboard functionality and statistics"
+    prerequisites: ["User Login Flow"]
+    steps:
+      - action: navigate
+        url: "/app/dashboard.php"
+        
+      - action: assert_element_visible
+        selector: ".dashboard-stats"
+        
+      - action: assert_element_visible
+        selector: ".stats-card"
+        
+      - action: check_dashboard_stats
+        expected_stats:
+          - "active_cases"
+          - "total_documents" 
+          - "upcoming_appointments"
+          - "unread_messages"
+          
+      - action: assert_element_visible
+        selector: ".quick-actions"
+        
+      - action: assert_links_functional
+        selectors:
+          - "a[href*='cases']"
+          - "a[href*='profile']"
+          - "a[href*='messages']"
+
+  # 3. CASE MANAGEMENT TESTS
+  - name: "Cases List View"
+    description: "Test cases listing and filtering"
+    prerequisites: ["User Login Flow"]
+    steps:
+      - action: navigate
+        url: "/app/cases/"
+        
+      - action: assert_element_visible
+        selector: ".cases-container"
+        
+      - action: assert_element_visible
+        selector: ".case-filters"
+        
+      - action: test_filter
+        filter: "active"
+        expected_result: "filtered_cases_displayed"
+        
+      - action: test_search
+        search_term: "accident"
+        expected_result: "search_results_displayed"
+        
+      - action: test_sorting
+        sort_options: ["title_asc", "created_desc", "updated_desc"]
+
+  - name: "Create New Case"
+    description: "Test case creation functionality"
+    prerequisites: ["User Login Flow"]
+    steps:
+      - action: navigate
+        url: "/app/cases/create.php"
+        
+      - action: wait_for_element
+        selector: "form.case-form"
+        
+      - action: fill_form
+        data:
+          title: "{{case_data.title}}"
+          description: "{{case_data.description}}"
+          case_type: "{{case_data.case_type}}"
+          incident_date: "{{case_data.incident_date}}"
+          
+      - action: click
+        selector: "button[type='submit']"
+        
+      - action: wait_for_navigation
+        expected_url: "/app/cases/"
+        
+      - action: assert_element_visible
+        selector: ".alert-success"
+        
+      - action: assert_text_contains
+        selector: ".case-title"
+        text: "{{case_data.title}}"
+
+  - name: "Case Details View"
+    description: "Test individual case viewing and editing"
+    prerequisites: ["Create New Case"]
+    steps:
+      - action: navigate
+        url: "/app/cases/"
+        
+      - action: click
+        selector: ".case-item:first-child .view-case-btn"
+        
+      - action: assert_element_visible
+        selector: ".case-details"
+        
+      - action: assert_element_visible
+        selector: ".case-timeline"
+        
+      - action: assert_element_visible
+        selector: ".case-documents"
+        
+      - action: test_case_actions
+        actions: ["edit", "add_note", "upload_document"]
+
+  # 4. PROFILE MANAGEMENT TESTS
+  - name: "Profile View and Edit"
+    description: "Test user profile viewing and editing"
+    prerequisites: ["User Login Flow"]
+    steps:
+      - action: navigate
+        url: "/app/profile.php"
+        
+      - action: assert_element_visible
+        selector: ".profile-container"
+        
+      - action: assert_form_populated
+        form_selector: ".profile-form"
+        expected_data:
+          name: "{{test_user.name}}"
+          email: "{{test_user.email}}"
+          
+      - action: fill_form
+        data:
+          address: "{{profile_data.address}}"
+          city: "{{profile_data.city}}"
+          postal_code: "{{profile_data.postal_code}}"
+          
+      - action: click
+        selector: "button[name='action'][value='update_profile']"
+        
+      - action: assert_element_visible
+        selector: ".alert-success"
+
+  - name: "Password Change"
+    description: "Test password change functionality"
+    prerequisites: ["User Login Flow"]
+    steps:
+      - action: navigate
+        url: "/app/profile.php"
+        
+      - action: scroll_to_element
+        selector: ".password-change-section"
+        
+      - action: fill_form
+        data:
+          current_password: "{{test_user.password}}"
+          new_password: "NewTestPass123!"
+          confirm_new_password: "NewTestPass123!"
+          
+      - action: click
+        selector: "button[name='action'][value='change_password']"
+        
+      - action: assert_element_visible
+        selector: ".alert-success"
+
+  # 5. MESSAGES TESTS
+  - name: "Messages Interface"
+    description: "Test messaging system functionality"
+    prerequisites: ["User Login Flow"]
+    steps:
+      - action: navigate
+        url: "/app/messages/"
+        
+      - action: assert_element_visible
+        selector: ".messages-container"
+        
+      - action: assert_element_visible
+        selector: ".case-selector"
+        
+      - action: assert_element_visible
+        selector: ".message-threads"
+        
+      - action: test_message_composition
+        message_text: "Test message from client"
+        
+      - action: assert_element_visible
+        selector: ".message-sent-confirmation"
+
+  # 6. DOCUMENTS TESTS
+  - name: "Documents Management"
+    description: "Test document viewing and uploading"
+    prerequisites: ["User Login Flow"]
+    steps:
+      - action: navigate
+        url: "/app/documents/"
+        
+      - action: assert_element_visible
+        selector: ".documents-container"
+        
+      - action: assert_element_visible
+        selector: ".document-list"
+        
+      - action: test_document_upload
+        file_path: "./test-files/sample-document.pdf"
+        
+      - action: assert_element_visible
+        selector: ".upload-success"
+        
+      - action: test_document_download
+        document_selector: ".document-item:first-child .download-btn"
+
+  # 7. APPOINTMENTS TESTS
+  - name: "Appointments Management"
+    description: "Test appointment viewing and scheduling"
+    prerequisites: ["User Login Flow"]
+    steps:
+      - action: navigate
+        url: "/app/appointments/"
+        
+      - action: assert_element_visible
+        selector: ".appointments-container"
+        
+      - action: assert_element_visible
+        selector: ".appointment-calendar"
+        
+      - action: test_appointment_creation
+        appointment_data:
+          date: "2024-12-15"
+          time: "10:00"
+          type: "consultation"
+          notes: "Initial consultation request"
+
+  # 8. NAVIGATION TESTS
+  - name: "Main Navigation Functionality"
+    description: "Test all navigation links and menus"
+    prerequisites: ["User Login Flow"]
+    steps:
+      - action: navigate
+        url: "/app/dashboard.php"
+        
+      - action: test_navigation_links
+        links:
+          - text: "Dashboard"
+            expected_url: "/app/dashboard.php"
+          - text: "My Cases"
+            expected_url: "/app/cases/"
+          - text: "My Profile"
+            expected_url: "/app/profile.php"
+          - text: "Messages"
+            expected_url: "/app/messages/"
+          - text: "Documents"
+            expected_url: "/app/documents/"
+            
+      - action: test_mobile_navigation
+        viewport: "mobile"
+
+  # 9. RESPONSIVE DESIGN TESTS
+  - name: "Mobile Responsiveness"
+    description: "Test mobile and tablet layouts"
+    steps:
+      - action: set_viewport
+        width: 375
+        height: 667
+        
+      - action: navigate
+        url: "/app/login.php"
+        
+      - action: assert_responsive_layout
+        elements:
+          - ".auth-container"
+          - ".form-group"
+          - ".btn-primary"
+          
+      - action: test_mobile_forms
+        forms: ["login", "registration", "case_creation"]
+
+  - name: "Tablet Responsiveness"
+    description: "Test tablet layout and functionality"
+    steps:
+      - action: set_viewport
+        width: 768
+        height: 1024
+        
+      - action: navigate
+        url: "/app/dashboard.php"
+        
+      - action: assert_responsive_layout
+        elements:
+          - ".dashboard-stats"
+          - ".navigation-menu"
+          - ".content-area"
+
+  # 10. SECURITY TESTS
+  - name: "Authentication Security"
+    description: "Test authentication security measures"
+    steps:
+      - action: test_unauthenticated_access
+        protected_urls:
+          - "/app/dashboard.php"
+          - "/app/cases/"
+          - "/app/profile.php"
+          - "/app/messages/"
+        expected_redirect: "/app/login.php"
+        
+      - action: test_csrf_protection
+        forms:
+          - "/app/cases/create.php"
+          - "/app/profile.php"
+          - "/app/messages/compose.php"
+
+  - name: "Session Management"
+    description: "Test session handling and logout"
+    prerequisites: ["User Login Flow"]
+    steps:
+      - action: navigate
+        url: "/app/logout.php"
+        
+      - action: wait_for_navigation
+        expected_url: "/app/login.php"
+        
+      - action: navigate
+        url: "/app/dashboard.php"
+        
+      - action: assert_url_contains
+        text: "login.php"
+
+  # 11. FORM VALIDATION TESTS
+  - name: "Client-Side Validation"
+    description: "Test JavaScript form validation"
+    steps:
+      - action: navigate
+        url: "/app/register.php"
+        
+      - action: test_field_validation
+        field: "email"
+        invalid_values: ["invalid-email", "", "test@"]
+        
+      - action: test_password_strength
+        passwords: ["weak", "Medium123", "Strong123!@#"]
+        
+      - action: test_required_fields
+        form_selector: "form[data-auth-form]"
+
+  # 12. ACCESSIBILITY TESTS
+  - name: "Accessibility Compliance"
+    description: "Test accessibility features and compliance"
+    steps:
+      - action: run_accessibility_audit
+        pages:
+          - "/app/login.php"
+          - "/app/register.php"
+          - "/app/dashboard.php"
+          - "/app/cases/"
+          - "/app/profile.php"
+          
+      - action: test_keyboard_navigation
+        elements: ["forms", "buttons", "links", "menus"]
+        
+      - action: test_screen_reader_compatibility
+        elements: ["labels", "headings", "alt_text"]
+
+  # 13. PERFORMANCE TESTS
+  - name: "Page Load Performance"
+    description: "Test page loading times and performance"
+    steps:
+      - action: measure_page_load_time
+        pages:
+          - "/app/login.php"
+          - "/app/dashboard.php"
+          - "/app/cases/"
+        max_load_time: 3000
+        
+      - action: test_image_optimization
+        check_formats: ["webp", "jpg", "png"]
+        
+      - action: test_css_js_minification
+        files: ["theme.css", "auth-validate.js"]
+
+  # 14. ERROR HANDLING TESTS
+  - name: "Error Page Handling"
+    description: "Test error scenarios and user feedback"
+    steps:
+      - action: test_404_handling
+        invalid_urls:
+          - "/app/nonexistent.php"
+          - "/app/cases/999999"
+          
+      - action: test_server_error_handling
+        simulate_errors: ["500", "503"]
+        
+      - action: test_network_error_handling
+        scenarios: ["offline", "slow_connection"]
+
+# Custom Actions for Med Attorneys specific functionality
+custom_actions:
+  check_dashboard_stats:
+    description: "Verify dashboard statistics are displayed correctly"
+    implementation: |
+      const statsCards = document.querySelectorAll('.stats-card');
+      return statsCards.length >= 4 && 
+             Array.from(statsCards).every(card => 
+               card.querySelector('.stat-number') && 
+               card.querySelector('.stat-label')
+             );
+             
+  test_case_actions:
+    description: "Test case-specific actions"
+    implementation: |
+      const actions = arguments[0].actions;
+      const results = {};
+      
+      for (const action of actions) {
+        const button = document.querySelector(`[data-action="${action}"]`);
+        results[action] = button && !button.disabled;
+      }
+      
+      return results;
+      
+  test_message_composition:
+    description: "Test message composition and sending"
+    implementation: |
+      const messageText = arguments[0].message_text;
+      const textarea = document.querySelector('textarea[name="message"]');
+      const sendButton = document.querySelector('button[type="submit"]');
+      
+      if (textarea && sendButton) {
+        textarea.value = messageText;
+        sendButton.click();
+        return true;
+      }
+      return false;
+
+# Test Execution Configuration
+execution:
+  retry_failed_tests: 2
+  continue_on_failure: true
+  generate_report: true
+  report_format: ["html", "json", "junit"]
+  
+# Cleanup
+cleanup:
+  - action: logout_user
+  - action: clear_test_data
+  - action: reset_database_state 

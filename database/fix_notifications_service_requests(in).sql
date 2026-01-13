@@ -1,0 +1,31 @@
+-- ============================================================================
+-- Fix for notifications.php - service_requests table structure
+-- ============================================================================
+-- This file documents the fix for the error:
+-- "Column not found: 1054 Unknown column 'sr.user_id' in 'on clause'"
+--
+-- The service_requests table does NOT have a user_id column.
+-- Users are accessed through the case relationship: cases.user_id
+-- ============================================================================
+--
+-- NO DATABASE CHANGES NEEDED - This is just a code fix
+-- The service_requests table structure is correct as-is:
+--
+-- CREATE TABLE `service_requests` (
+--   `id` int(11) NOT NULL,
+--   `case_id` int(11) NOT NULL,
+--   `service_id` int(11) NOT NULL,
+--   `status` enum('cart','pending','approved','rejected','completed') NOT NULL DEFAULT 'cart',
+--   ...
+--   -- NO user_id column exists
+-- )
+--
+-- The fix has been applied in app/admin/notifications.php line 143:
+-- Changed from: LEFT JOIN users u ON (c.user_id = u.id OR sr.user_id = u.id)
+-- Changed to:   LEFT JOIN users u ON c.user_id = u.id
+--
+-- ============================================================================
+-- This SQL file is for documentation purposes only
+-- No SQL execution is required
+-- ============================================================================
+

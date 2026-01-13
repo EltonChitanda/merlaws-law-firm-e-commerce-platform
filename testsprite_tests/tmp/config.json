@@ -1,0 +1,18 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:443",
+  "loginUser": "client.matt@gmail.com",
+  "loginPassword": "2025@Password",
+  "executionArgs": {
+    "projectName": "medlaw",
+    "projectPath": "C:\\xampp\\htdocs\\www.medlaw.co.za",
+    "testIds": [],
+    "additionalInstruction": "Test all client-side pages comprehensively from login through all major functionality using HTTPS port 443. Focus on authentication, dashboard, case management, document upload, service requests, appointments, messaging, notifications, profile management, and reports.",
+    "envs": {
+      "API_KEY": "sk-user-bJ3ZXB5aYLowjZYBjdgZF7gnnken1TAX1mIfCf5BMabALlfGOjTaHDad3TfrYLgxTFKY_E_w4UZkJkCaFI4DFhMP6gp0ACjiMhlUvIlJX5P3ZfU2buzfH-uyUIdupogCaD8"
+    }
+  },
+  "proxy": "http://4d4383fc-08f2-4c99-8bea-23bca660b1c0:zqFAfytSNocLsmkr2pLG5Bm1m58N0Ado@tun.testsprite.com:8080"
+}

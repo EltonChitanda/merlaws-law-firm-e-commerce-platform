@@ -1,0 +1,575 @@
+[
+  {
+    "id": "TC001",
+    "title": "User Registration Success",
+    "description": "Verify that a new user can register successfully with valid inputs and receives confirmation.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the registration page."
+      },
+      {
+        "type": "action",
+        "description": "Enter valid user information (name, email, password, confirm password)."
+      },
+      {
+        "type": "action",
+        "description": "Submit the registration form."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify registration success message is displayed."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify confirmation email is sent to the provided email address."
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "User Registration Validation Errors",
+    "description": "Check that registration form validation works correctly and appropriate error messages are shown for invalid input.",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the registration page."
+      },
+      {
+        "type": "action",
+        "description": "Submit the form with blank fields."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify error messages displayed for required fields."
+      },
+      {
+        "type": "action",
+        "description": "Enter invalid email format and passwords that don't match."
+      },
+      {
+        "type": "action",
+        "description": "Submit the form."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify appropriate validation error messages are displayed for email format and password mismatch."
+      },
+      {
+        "type": "action",
+        "description": "Attempt to register with an already registered email."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify error message indicating email already in use."
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Login Success",
+    "description": "Ensure users can successfully login with valid credentials and reach the appropriate dashboard.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to login page."
+      },
+      {
+        "type": "action",
+        "description": "Enter valid registered email and password."
+      },
+      {
+        "type": "action",
+        "description": "Click the login button."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm user is redirected to the appropriate dashboard based on role (client or admin)."
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Login Failure with Incorrect Credentials",
+    "description": "Check system response for login attempts with invalid username or password.",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to login page."
+      },
+      {
+        "type": "action",
+        "description": "Enter incorrect or unregistered email."
+      },
+      {
+        "type": "action",
+        "description": "Enter any password."
+      },
+      {
+        "type": "action",
+        "description": "Click the login button."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify error message indicating invalid credentials is displayed."
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Password Reset Flow",
+    "description": "Verify users can successfully initiate password reset, receive email, and reset password with a valid token.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to 'Forgot Password' page."
+      },
+      {
+        "type": "action",
+        "description": "Enter registered email and submit."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify password reset email is sent."
+      },
+      {
+        "type": "action",
+        "description": "Open email and click reset link."
+      },
+      {
+        "type": "action",
+        "description": "Enter new valid password and confirm."
+      },
+      {
+        "type": "action",
+        "description": "Submit password reset form."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify password reset success message and ability to login with new password."
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Password Reset with Invalid or Expired Token",
+    "description": "Ensure password reset fails with an invalid or expired token and displays an appropriate error message.",
+    "category": "error handling",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to reset password page with an invalid or expired token."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify error message about invalid or expired token prevents password reset."
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "CSRF Protection Validation",
+    "description": "Verify that CSRF protection is enforced on authentication and data submission forms.",
+    "category": "security",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Attempt to submit login, registration, and case creation forms without CSRF token or with an invalid token."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify submission is rejected and appropriate error messages or redirects occur."
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Client Case Creation and Editing",
+    "description": "Test clients can create new cases, edit case information, and view case details.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Login as a client."
+      },
+      {
+        "type": "action",
+        "description": "Navigate to case management section and create a new case with valid data."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify new case is created and listed in dashboard overview."
+      },
+      {
+        "type": "action",
+        "description": "Open the created case and edit details (e.g., case status, description)."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify changes are saved and reflected correctly."
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Case Creation Validation Errors",
+    "description": "Check that error handling for missing or invalid case creation input fields is functional.",
+    "category": "error handling",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Attempt to create a case with incomplete or invalid required fields."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify proper error messages are displayed and case is not created."
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Service Catalog Browsing and Adding Services to Case Cart",
+    "description": "Verify clients can browse service catalog, add multiple services to the case-specific cart, and persist the cart state.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Login as client and open an active case."
+      },
+      {
+        "type": "action",
+        "description": "Navigate to service catalog."
+      },
+      {
+        "type": "action",
+        "description": "Add individual services (consultations, doctor visits, transportation) to the case cart."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the selected services appear correctly in the case cart and persist after page reload."
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "Service Request Submission and Admin Approval Workflow",
+    "description": "Verify clients can submit service requests from their case cart and admins can approve or reject these requests.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Client adds services to case cart and submits request."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify request status is pending and notification is sent to admin."
+      },
+      {
+        "type": "action",
+        "description": "Login as admin and navigate to service requests dashboard."
+      },
+      {
+        "type": "action",
+        "description": "Approve a pending service request."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify client receives notification of approval and case status updates accordingly."
+      },
+      {
+        "type": "action",
+        "description": "Reject another service request and provide reason."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify client sees rejection notification with reason."
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Administrator Case Status Update and Fee Calculation",
+    "description": "Verify that administrators can update case statuses, and upon case win, contingency fees are correctly calculated and recorded as 25% of compensation.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Admin logs in and opens a settled case marked as 'Won'."
+      },
+      {
+        "type": "action",
+        "description": "Input compensation amount and trigger fee calculation."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify fee calculated is exactly 25% of compensation and reflected in case records."
+      },
+      {
+        "type": "action",
+        "description": "Update case status and save."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify updated status is displayed for clients and reflected in admin reports."
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Secure Document Upload and Validation",
+    "description": "Validate that clients can upload documents securely with only allowed file types and sizes, and download existing documents.",
+    "category": "security",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Login as client and navigate to document management for a case."
+      },
+      {
+        "type": "action",
+        "description": "Upload a document with permitted file type and size."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify upload successful and document is listed."
+      },
+      {
+        "type": "action",
+        "description": "Attempt to upload a disallowed file type or oversized file."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify error message and rejection of the upload."
+      },
+      {
+        "type": "action",
+        "description": "Download an uploaded document."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify document downloads correctly with no data corruption."
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Appointment Scheduling and Management",
+    "description": "Ensure clients can schedule and view appointments with attorneys and receive confirmation notifications.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Client navigates to appointment scheduling."
+      },
+      {
+        "type": "action",
+        "description": "Select available time, add meeting details, and submit appointment request."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm appointment is created and visible in client and attorney calendars."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify notification email is sent to both parties."
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Internal Messaging System Functionality",
+    "description": "Validate that clients and attorneys can send and receive messages within the system, including new message notifications.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "User logs in and navigates to messaging system."
+      },
+      {
+        "type": "action",
+        "description": "Compose and send a message to another user."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify message appears in sender's sent folder and recipient's inbox."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify notification alert is received by recipient."
+      }
+    ]
+  },
+  {
+    "id": "TC016",
+    "title": "System-wide Notifications Delivery",
+    "description": "Test that system notifications for events (approvals, status changes, settlements) are sent as emails and appear in user dashboards.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Trigger important events like service request approval and case status update."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify corresponding notifications appear in user dashboard."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify notification emails are received by intended recipients."
+      }
+    ]
+  },
+  {
+    "id": "TC017",
+    "title": "Role-Based Access Control Enforcement",
+    "description": "Verify users with different roles (client, admin) can access only their permitted system areas and features.",
+    "category": "security",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Login as client user and attempt to access admin dashboard and user management pages."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify access is denied or redirected with appropriate error message."
+      },
+      {
+        "type": "action",
+        "description": "Login as admin user and verify access to all admin functionalities."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify admin can manage users, service approvals, and system settings."
+      }
+    ]
+  },
+  {
+    "id": "TC018",
+    "title": "Responsive UI Verification Across Devices",
+    "description": "Test the application's user interface responsiveness on desktop, tablet, and mobile devices per design specifications.",
+    "category": "ui",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Access client and admin dashboards on desktop screen size."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify layout is correct and all components are visible and functional."
+      },
+      {
+        "type": "action",
+        "description": "Resize or access the platform on tablet-sized viewport."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that UI adapts properly with navigation and content reflow."
+      },
+      {
+        "type": "action",
+        "description": "Access on mobile device or emulator."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify touch controls, menu toggles, and readability meet usability standards."
+      }
+    ]
+  },
+  {
+    "id": "TC019",
+    "title": "Reports and Analytics Accuracy",
+    "description": "Verify that reports reflect correct case outcomes and service usage with accurate aggregation and export functionality.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Generate reports for cases and service usage over specified periods."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify data accuracy against raw records."
+      },
+      {
+        "type": "action",
+        "description": "Export reports to supported formats (e.g., CSV, PDF)."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify exported files are complete and formatted correctly."
+      }
+    ]
+  },
+  {
+    "id": "TC020",
+    "title": "Secure File Upload Malicious Payload Test",
+    "description": "Check that file upload controls detect and prevent uploading of malicious files or scripts to protect from security vulnerabilities.",
+    "category": "security",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Attempt to upload files containing scripts, executables, or disguised malware."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify uploads are rejected and logged, and no execution occurs on server."
+      }
+    ]
+  },
+  {
+    "id": "TC021",
+    "title": "Session Management and Logout",
+    "description": "Validate that user sessions are properly maintained after login and fully terminated upon logout.",
+    "category": "security",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Login as client or admin user."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify session is active and user can navigate protected pages."
+      },
+      {
+        "type": "action",
+        "description": "Click logout button or link."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify session is destroyed and user is redirected to login page."
+      },
+      {
+        "type": "action",
+        "description": "Attempt to access protected pages after logout."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify access is denied and user is redirected to login."
+      }
+    ]
+  }
+]

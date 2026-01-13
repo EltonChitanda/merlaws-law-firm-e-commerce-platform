@@ -1,0 +1,60 @@
+{
+    "user_id": 20008,
+    "updated_at": "2025-11-16T00:06:31+02:00",
+    "entries": [
+        {
+            "start_at": "2025-11-05 08:00:00",
+            "end_at": "2025-11-05 12:00:00",
+            "timezone": "Africa\/Johannesburg",
+            "location": "Courtroom",
+            "recurrence_rule": "Monthly",
+            "block_reason": "Court Session",
+            "source": "CSV upload"
+        },
+        {
+            "start_at": "2025-11-12 09:00:00",
+            "end_at": "2025-11-12 13:00:00",
+            "timezone": "Africa\/Johannesburg",
+            "location": "Office",
+            "recurrence_rule": "Monthly",
+            "block_reason": "Team Review",
+            "source": "CSV upload"
+        },
+        {
+            "start_at": "2025-11-16 15:43:00",
+            "end_at": "2025-11-22 15:44:00",
+            "timezone": "Africa\/Johannesburg",
+            "location": "",
+            "recurrence_rule": "every two days",
+            "block_reason": "",
+            "source": "Manual entry"
+        },
+        {
+            "start_at": "2025-11-16 15:43:00",
+            "end_at": "2025-11-22 15:44:00",
+            "timezone": "Africa\/Johannesburg",
+            "location": "",
+            "recurrence_rule": "every two days",
+            "block_reason": "",
+            "source": "Manual entry"
+        },
+        {
+            "start_at": "2025-11-16 15:43:00",
+            "end_at": "2025-11-22 15:44:00",
+            "timezone": "Africa\/Johannesburg",
+            "location": "",
+            "recurrence_rule": "every two days",
+            "block_reason": "",
+            "source": "Manual entry"
+        },
+        {
+            "start_at": "2025-11-20 10:00:00",
+            "end_at": "2025-11-20 15:00:00",
+            "timezone": "Africa\/Johannesburg",
+            "location": "Remote",
+            "recurrence_rule": "Monthly",
+            "block_reason": "Report Writing",
+            "source": "CSV upload"
+        }
+    ]
+}
